@@ -20,7 +20,7 @@
     <div class="sidebar1" id="sidebar">
       <div>
         <h4>
-          Sistem Manajemen Perumahan
+          Sistem Manajemen Informasi Perumahan
         </h4>
         <div class="nav1">
           <a class=" menu-link" href="/dashboard"><span class="material-icons rotate-icon">dashboard</span> Dashboard</a>
