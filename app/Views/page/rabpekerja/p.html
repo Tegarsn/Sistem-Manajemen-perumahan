@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Pernikahan</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box;}
+    body {
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      background: #fffafc;
+      color: #333;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(120deg, #ffb6c1, #f7d9e3, #fbc2eb);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      position: relative;
+    }
+    .hero h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.2rem;
+      margin-bottom: 20px;
+      animation: zoomIn 2s ease forwards;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      animation: fadeIn 3s ease forwards;
+    }
+    @keyframes zoomIn {
+      from {transform: scale(0.5); opacity:0;}
+      to {transform: scale(1); opacity:1;}
+    }
+    @keyframes fadeIn {
+      from {opacity:0;}
+      to {opacity:1;}
+    }
+
+    /* Floating Flowers */
+    .flower {
+      position: absolute;
+      width: 80px;
+      opacity: 0.5;
+      animation: float 6s infinite ease-in-out;
+    }
+    .flower1 { top: 10%; left: 5%; }
+    .flower2 { bottom: 15%; right: 10%; animation-delay: 2s; }
+    @keyframes float {
+      0%,100% {transform: translateY(0);}
+      50% {transform: translateY(-20px);}
+    }
+
+    /* Journey Section */
+    .journey {
+      padding: 60px 20px;
+      background: #fff0f6;
+      text-align: center;
+    }
+    .journey h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      color: #c71585;
+    }
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .card:hover { transform: translateY(-10px); }
+
+    /* Invitation Section */
+    .invitation {
+      padding: 60px 20px;
+      background: linear-gradient(120deg, #fbc2eb, #a6c1ee);
+      text-align: center;
+      color: #fff;
+    }
+    .invitation h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    .invitation p {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    .countdown {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-top: 20px;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%,100% {transform: scale(1);}
+      50% {transform: scale(1.1);}
+    }
+
+    /* Location Section */
+    .location {
+      padding: 60px 20px;
+      background: #fffafc;
+      text-align: center;
+    }
+    .location h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #c71585;
+    }
+    .map {
+      width: 100%;
+      max-width: 600px;
+      height: 300px;
+      margin: auto;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      padding: 20px;
+      text-align: center;
+      background: #fbc2eb;
+      color: #fff;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width:768px){
+      .hero h1 {font-size:2.2rem;}
+      .journey h2,.invitation h2,.location h2{font-size:2rem;}
+      .countdown{font-size:1.5rem;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Happy Wedding</h1>
+    <p>Kami mengundang Anda untuk merayakan hari bahagia kami</p>
+    <img src="https://cdn-icons-png.flaticon.com/512/477/477406.png" class="flower flower1">
+    <img src="https://cdn-icons-png.flaticon.com/512/477/477406.png" class="flower flower2">
+  </section>
+
+  <!-- Journey -->
+  <section class="journey">
+    <h2 data-aos="fade-up">Our Journey</h2>
+    <div class="timeline">
+      <div class="card" data-aos="fade-right">
+        <h3>Pertemuan</h3>
+        <p>Kisah indah dimulai ketika kami dipertemukan pertama kali.</p>
+      </div>
+      <div class="card" data-aos="fade-up">
+        <h3>Perjalanan</h3>
+        <p>Kami melewati suka duka bersama hingga tumbuh saling melengkapi.</p>
+      </div>
+      <div class="card" data-aos="fade-left">
+        <h3>Lamaran</h3>
+        <p>Hari istimewa ketika janji terucap untuk melangkah bersama.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Invitation -->
+  <section class="invitation">
+    <h2 data-aos="zoom-in">Undangan Pernikahan</h2>
+    <p data-aos="fade-up">Dengan penuh rasa syukur, kami mengundang Anda untuk hadir dalam pernikahan kami.</p>
+    <p data-aos="fade-up">Tanggal: 20 Desember 2025</p>
+    <p data-aos="fade-up">Tempat: Ballroom Grand Hall</p>
+    <div class="countdown" id="countdown"></div>
+  </section>
+
+  <!-- Location -->
+  <section class="location">
+  <h2 data-aos="fade-up">Lokasi Acara</h2>
+  <p data-aos="fade-up">Ballroom Grand Hall, Jalan Mawar Indah No. 123, Banyuwangi</p>
+  <div class="map" data-aos="zoom-in">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.525581424442!2d106.82697741476874!3d-6.175387395528223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5c5084f5abf%3A0x301576d14feb800!2sMonumen%20Nasional!5e0!3m2!1sid!2sid!4v1632121212121!5m2!1sid!2sid" 
+      width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+    </iframe>
+  </div>
+  <p style="margin-top:15px;" data-aos="fade-up">
+    Klik <a href="https://goo.gl/maps/4yXCG6B3Pa8CDvXj7" target="_blank" style="color:#c71585; font-weight:bold;">di sini</a> untuk membuka di Google Maps
+  </p>
+</section>
+
+  <footer>
+    © 2025 Happy Wedding - All Rights Reserved
+  </footer>
+
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1200,
+      once: true
+    });
+
+    // Countdown
+    const countdown = document.getElementById("countdown");
+    const targetDate = new Date("Dec 20, 2025 10:00:00").getTime();
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      const days = Math.floor(distance / (1000*60*60*24));
+      const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+      const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
+      const seconds = Math.floor((distance % (1000*60))/1000);
+
+      countdown.innerHTML = `${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik`;
+    }, 1000);
+  </script>
+</body>
+</html>
