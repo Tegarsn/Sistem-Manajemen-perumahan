@@ -3,7 +3,7 @@ $(document).ready(function() {
     processing: true,
     serverSide: true,
     lengthMenu: [5, 10, 20, 25],
-    ajax: '/data-user/json',
+    ajax: '/data-mandor/json',
     columns: [
       { data: 'nama' },
       { data: 'username' },
@@ -51,13 +51,13 @@ function openCreateForm() {
   $('#modalUserForm form')[0].reset();
   $('#modalUserForm input[name=id]').val('');
   $('#modalUserFormLabel').text('Tambah data User');
-   $('.hint-password').hide();
+  $('.hint-password').hide();
   $('#modalUserForm').modal('show');
 }
 
 function simpanUser() {
   let id = $('#modalUserForm input[name=id]').val();
-  let url = id ? `/user/update/${id}` : `/user/store`;
+  let url = id ? `/mandor/update/${id}` : `/mandor/store`;
   let message = id ? 'Data user berhasil diperbarui!' : 'Data user berhasil ditambahkan!';
 
   $.post(url, $('#modalUserForm form').serialize(), function (res) {
@@ -74,8 +74,10 @@ function simpanUser() {
   });
 }
 
+
+
 function editUser(id) {
-  $.get(`/ user/edit/${id}`, function (data) {
+  $.get(`/ mandor/edit/${id}`, function (data) {
     $('#modalUserForm input[name=id]').val(data.id);
     $('#modalUserForm input[name=nama]').val(data.nama);
     $('#modalUserForm input[name=username]').val(data.username);
@@ -98,7 +100,7 @@ $('#confirmDeleteBtn').click(function () {
   if (!idToDelete) return;
 
   $.ajax({
-    url: `/user/delete/${idToDelete}`,
+    url: `/mandor/delete/${idToDelete}`,
     type: 'DELETE',
     success: function () {
       $('#confirmDeleteModal').modal('hide');
@@ -107,6 +109,7 @@ $('#confirmDeleteBtn').click(function () {
 
       idToDelete = null;
 
+      // Sembunyikan modal sukses setelah beberapa detik (opsional)
       setTimeout(() => {
         $('#successModal').modal('hide');
       }, 2000);

@@ -6,16 +6,18 @@ use App\Controllers\BaseController;
 use App\Models\UserModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
-class UserController extends BaseController
+class MandorController extends BaseController
 {
-    public function user()
+    public function mandor()
     {
         $userModel = new UserModel();
-        $data['user'] = $userModel->findAll();
-        return view('page/user/user', $data);
+        $data['user'] = $userModel->where('role', 'mandor')->findAll();
+
+        return view('page/user/mandor', $data);
     }
 
-    public function json() {
+    public function json()
+    {
         $request = service('request');
         $model = new UserModel();
 
@@ -24,23 +26,25 @@ class UserController extends BaseController
         $length = (int) $request->getGet('length');
         $draw = (int) $request->getGet('draw');
 
-        $query = $model;
+        $query = $model->where('role', 'mandor');
 
         if ($searchValue) {
             $query = $query
-            ->groupStart()
-            ->like('nama', $searchValue)
-            ->orLike('username', $searchValue)
-            ->orLike('status', $searchValue)
-            ->groupEnd();
+                ->groupStart()
+                ->like('nama', $searchValue)
+                ->orLike('username', $searchValue)
+                ->orLike('status', $searchValue)
+                ->groupEnd();
         }
 
         $query = $query->orderBy('created_at', 'DESC');
+
         $filteredQuery = clone $query;
+
         $data = $query->findAll($length, $start);
-        $total = $model->countAll();
+        $total = $model->where('role', 'mandor')->countAllResults();
         $filtered = $searchValue ? $filteredQuery->countAllResults(false) : $total;
-        
+
         return $this->response->setJSON([
             'draw' => $draw,
             'recordsTotal' => $total,
@@ -49,36 +53,42 @@ class UserController extends BaseController
         ]);
     }
 
-    public function create() {
+    public function create()
+    {
         return view('page/user/create');
     }
 
-    public function store() {
+    public function store()
+    {
         $userModel = new UserModel();
         $data = [
             'nama' => $this->request->getPost('nama'),
             'username' => $this->request->getPost('username'),
-            'password' => $this->request->getPost('password'),
+            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+            'role' => 'mandor',
             'status' => $this->request->getPost('status')
         ];
         $userModel->insert($data);
 
         return $this->response->setJSON(['success' => true]);
     }
-    
-    public function edit($id) {
+
+    public function edit($id)
+    {
         $model = new UserModel();
         $user = $model->find($id);
         return $this->response->setJSON($user);
     }
 
-    public function update($id) {
+    public function update($id)
+    {
         $userModel = new UserModel();
+
         $data = [
             'nama' => $this->request->getPost('nama'),
             'username' => $this->request->getPost('username'),
-            'password' => $this->request->getPost('password'),
-            'status' => $this->request->getPost('status')
+            'role' => 'mandor',
+            'status' => $this->request->getPost('status'),
         ];
 
         $password = $this->request->getPost('password');
@@ -87,11 +97,11 @@ class UserController extends BaseController
             $data['password'] = password_hash($password, PASSWORD_DEFAULT);
         }
         $userModel->update($id, $data);
-
         return $this->response->setJSON(['success' => true]);
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $userModel = new UserModel();
         $userModel->delete($id);
         return $this->response->setJSON(['success' => true]);

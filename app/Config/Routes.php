@@ -84,13 +84,19 @@ $routes->get('/login', 'LoginController::loginform');
 $routes->post('/login/auth', 'LoginController::login');
 $routes->get('/logout', 'LoginController::logout');
 
+$routes->get('/data-user', 'UserController::user');
+$routes->get('/data-user/json', 'UserController::json');
+$routes->post('/user/store', 'UserController::store');
+$routes->get('/user/edit/(:num)', 'UserController::edit/$1');
+$routes->post('/user/update/(:num)', 'UserController::update/$1');
+$routes->delete('/user/delete/(:num)', 'UserController::delete/$1');
 
-$routes->get('/data-mandor', 'UserController::user');
-$routes->get('/data-mandor/json', 'UserController::json');
-$routes->post('/mandor/store', 'UserController::store');
-$routes->get('/mandor/edit/(:num)', 'UserController::edit/$1');
-$routes->post('/mandor/update/(:num)', 'UserController::update/$1');
-$routes->delete('/mandor/delete/(:num)', 'UserController::delete/$1');
+$routes->get('/data-mandor', 'MandorController::mandor');
+$routes->get('/data-mandor/json', 'MandorController::json');
+$routes->post('/mandor/store', 'MandorController::store');
+$routes->get('/mandor/edit/(:num)', 'MandorController::edit/$1');
+$routes->post('/mandor/update/(:num)', 'MandorController::update/$1');
+$routes->delete('/mandor/delete/(:num)', 'MandorController::delete/$1');
 
 $routes->get('/rab-rumah', 'RabRumahController::rabrumah');
 $routes->get('/rab-rumah/json', 'RabRumahController::json');

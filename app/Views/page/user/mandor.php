@@ -182,7 +182,7 @@
                 <div class="mb-3">
                   <label for="password" class="form-label">Password</label>
                   <input type="password" class="form-control" name="password">
-                  <small class="text-muted">*Kosongkan jika tidak ingin mengubah password</small>
+                  <small class="text-muted hint-password" style="display: none;">*Kosongkan jika tidak ingin mengubah password</small>
                 </div>
                <div class="mb-3">
                   <label for="role" class="form-label">Role</label>
@@ -266,12 +266,12 @@
         }, 2500);
     }
     document.querySelectorAll('.dropdown-btn').forEach(btn => {
-  btn.addEventListener('click', function () {
-    this.parentElement.classList.toggle('aktif');
-  });
-});
+      btn.addEventListener('click', function () {
+        this.parentElement.classList.toggle('aktif');
+      });
+    });
   </script>
-  <script src="<?= base_url('assets/js/datauser.js') ?>"></script>
+  <script src="<?= base_url('assets/js/datamandor.js') ?>"></script>
     
 </body>
 </html>
