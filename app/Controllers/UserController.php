@@ -29,7 +29,7 @@ class UserController extends BaseController
         if ($searchValue) {
             $query = $query
             ->groupStart()
-            ->like('nama', $searchValue)
+            ->like('nama', $searchValue) 
             ->orLike('username', $searchValue)
             ->orLike('status', $searchValue)
             ->groupEnd();
